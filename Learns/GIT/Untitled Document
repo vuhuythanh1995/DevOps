@@ -1,0 +1,2 @@
+Xóa repo .git
+$ rm -fr .git

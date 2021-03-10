@@ -1,0 +1,13 @@
+Tạo node manager 
+$ docker swarm init --advertise-addr <IP host manager>
+->gen ra mã 
+docker swarm join --token SWMTKN-1-46y7mkehbfjb4s62u9p3nkxdmndthh4e3gqtpwm9i5g21o42hc-cafia8lwqnrq1rj92r3rtqnz3 192.168.0.8:2377
+Tạo node worker
+==>Coppy vào trong các máy worker
+
+Triển khai 1 service chạy image Nginx trên Swarm cluster
+$ docker service create --name nginx-app5 -p 8080:80 nginx:alpine
+
+Docker --replicas
+$ docker service update --replicas 6 --publish-rm 8081:80 --publish-add 8080:80 nginx-app110
+nginx-app110

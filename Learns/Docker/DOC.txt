@@ -1,0 +1,48 @@
+-- Exec vào trong 1 container mà bị gặp lỗi OCI runtime exec failed: exec failed: container_linux.go:370: starting container process caused: exec: "/bin": permission denied: unknown
+Cách fix:
+$ docker exec -it (name_id container) /bin/bash (or sh).
+=================================================================================================
+-- 1 Image có thể tạo ra nhiều container.
+chạy 1 Image :
+$ docker run -d --name (do mình đặt) -p (Expose cổng của container ra cổng của máy host) Image:Tag
+example :
+$ docker run -d --name nginx-1 -p 8082:80 nginx:latest
+
+==> http://localhost:8082/
+=================================================================================================
+-- Expose trong docker :
+ 
+$ -p host_port:container_port 
+chuyển cổng ip của container_port về ip tại host chứa container đó.
+$ -p 8082:80 ===> http://localhost:8082/
+=================================================================================================
+-- Mount 
+
+$ docker run -p 9001:3000 -v $PWD:/usr/src/app handuy1992/vol
+-v là tùy chọn để mount giữa host với thư mục trong docker.
+=================================================================================================
+-- Thao tác cơ bản với docker (chạy , dừng ... )
+
+https://jobs.hybrid-technologies.vn/blog/huong-dan-su-dung-docker-co-ban/
+=================================================================================================
+-- Check network trong docker, muốn xóa 1 network trong docker phải xóa (hoặc dừng) các container trong docker đó.
+
+$ docker network inspect network_name =================================================================================================
+-- Bridge và Host Network trong Docker
+
+https://docker-ghichep.readthedocs.io/en/latest/docker-network/#12-bridge
+
+Docker có 3 default network là Host, Brigde, Null.
+Khi chạy 1 container nếu không set --network , nó sẽ tự động nhận bridge network làm cấu hình mạng.
+=================================================================================================
+Build 1 Image trong docker
+
+$ docker build -t (ten image) . 
+=================================================================================================
+-- Prune
+
+$ docker image prune //  xoa cac image khong dung den
+$ docker volume prune // xoa cac volume khong dung den
+=================================================================================================
+Chanel về 
+https://www.youtube.com/watch?v=r6JiWwh-08c&list=PLwJr0JSP7i8At14UIC-JR4r73G4hQ1CXO

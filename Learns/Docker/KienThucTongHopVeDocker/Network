@@ -1,0 +1,15 @@
+-- Khi ta cài docker sẽ mặc định có 3 card mạng là : 
+	-bridge
+	-host
+	-none
+-- Bridge :
+	Docker sẽ tạo ra 1 switch ảo. Khi container được tạo ra, interface của container sẽ tự động gắn vào switch ảo này và kết nối với interface của host. Những container trong cùng mạng có thể ping và curl được với nhau.
+-- Host :
+	Container sẽ dùng mạng trực tiếp của máy Host.
+-- None :
+	Các container được thiết lập cấu hình network này sẽ không được cấu hình mạng.
+
+Tài liệu Docker-Network.
+https://docker-ghichep.readthedocs.io/en/latest/docker-network/#12-bridge
+docker service create --name node-app -p 8000:3000 --replicas=4 --env MONGODB_URI=mongodb://mongodb:27017/demo --env PORT=3000 --network=myapp vhthanh/demo-service1:latest
+

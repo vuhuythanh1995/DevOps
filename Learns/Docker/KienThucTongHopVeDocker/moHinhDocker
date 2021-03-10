@@ -1,0 +1,3 @@
+Mô hình Docker :
+
+			Dockerfile (build) -> Image (run) -> Container.

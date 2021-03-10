@@ -1,0 +1,6 @@
+Tạo và quản lý docker-machine :
+https://xuanthulab.net/tao-va-quan-ly-cac-may-docker-machine.html 
+
+Tải virtual box cho Ubuntu :
+$ sudo apt-get install virtualbox
+https://stackoverflow.com/questions/45836296/error-with-pre-create-check-vboxmanage-not-found-make-sure-virtualbox-is-inst

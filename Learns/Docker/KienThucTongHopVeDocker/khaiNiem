@@ -1,0 +1,15 @@
+Docker hoạt động bằng cách cung cấp phương thức tiêu chuẩn để chạy mã của bạn. Docker là hệ điều hành dành cho container.
+	Có thể hình dung Docker là con cái voi , chứa trên nó các container , trong mỗi container sẽ đóng gói nhiều phần mềm cần để chạy như thư viện công cụ hệ thống , mã v.v giúp ta nhanh chóng triển khai và thay đổi quy mô ứng dụng vào bất kỳ môi trường nào .
+	Thực tế thì Docker là 1 hệ điều hành dành cho các container. Tương tư như cách máy ảo ảo hóa ( loại bỏ nhu cầu quản lý trực tiếp ) phần cứng máy chủ, các container sẽ ảo hóa hệ điều hành của máy chủ. Docker được cài đặt trên từng máy chủ và cung cấp các lệnh đơn giản mà bạn có thể dựng, khởi động hoặc dừng container.
+
+
+		CONTARINER				VM
+	APP1	APP2	AAP3			APP1	APP2	AAP3
+   Bins/Libs Bins/Libs Bins/Libs	   Bins/Libs Bins/Libs Bins/Libs
+	Docker Engine			   Guest OS  Guest OS  Guest OS
+	Guest OS				Hypervisor
+	Hypervisor				Sever (Host)
+	Sever (Host)
+
+Bàn luận về Docker : 
+https://kipalog.com/tags/Docker

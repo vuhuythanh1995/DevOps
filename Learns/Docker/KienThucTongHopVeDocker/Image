@@ -1,0 +1,27 @@
+-- Image là khung gói gọn các cài đặt , thiết lập cần cho ứng dụng. Có thể hình dung Image là 1 -Class trong OOP, có thể tạo ra nhiều container tương tự như Object.
+-- Để build 1 Image ta cần viết 1 Dockerfile, từ Dockerfile sẽ builde ra được 1 hoặc nhiểu Image :
+$ docker build -t (tên của Image) . ( dấu chấm là thư mục để lưu image)
+Example : $ docker build -t hello-docker .
+
+--Cách viết 1 Dockerfile : 
+Tạo 1 file Dockerfile dạng text lưu các bước để tạo ra 1 Docker Image
+Mỗi bước có cấu trúc dạng : INSTRUCTION argument .
+Ý nghĩa từng Instruction :
+	FROM dùng để chỉ ra image được builde từ image gốc nào. Tùy vào mỗi ứng dụng cần đóng gói mà hcusng ta sẽ sử dụng image gốc khác nhau.
+	RUN dùng để chạy một lệnh nào đó khi build image.
+	WORKDIR dùng để thiếp lập thư mục làm việc, mọi chỉ thị đằng sau đó sẽ diễn ra trong thư mục WORKDIR này.
+	COPY copy thư mục nguồn từ máy host vào filesystem của image. 
+	CMD dùng để cung cấp câu lệnh mặc định sẽ được chạy khi Docker Container khởi động từ Image đã build, chỉ có thể có duy nhất 1 chỉ thị CMD.
+-- Để check có bao nhiêu image trên máy host ta dùng lệnh sau:
+$ docker images 
+
+-- Quản lý môi trường Docker bằng Portainer
+
+$ docker volume create portainer_data
+$ docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+===> http://locallhost:9000
+Cài đặt 
+https://documentation.portainer.io/v2.0/deploy/linux/
+https://docs.fuga.cloud/how-to-install-portainer-docker-ui-manager-on-ubuntu-20.04-18.04-16.04
+https://www.howtoforge.com/tutorial/ubuntu-docker-portainer/
+
