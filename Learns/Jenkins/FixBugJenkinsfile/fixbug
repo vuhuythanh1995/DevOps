@@ -1,0 +1,27 @@
+
++++++>Jenkinsfile không thay đổi được thư mục khi dùng lệnh sh 'cd'
+
+Trong Jenkinsfile :
+
+dir(directory){
+	sh 'pwd'
+}
+
+Example :
+
+pipeline {
+    agent any
+    stages {
+        stage('Run Unit Test') {
+            steps {
+                sh 'pwd'
+                dir('build') { // chuyển đến thư mục build, thực hiện xong câu lệnh bên trong sẽ trở về thư mục cũ.
+                    sh 'pwd' // hiển thị đường dẫn tuyệt đối đến thư mục hiện tại.
+                    sh './runTests' // chạy file ./runTests trong thư mục.
+                }
+            }
+        }
+    }
+}
+Source:
+https://stackoverflow.com/questions/52372589/jenkins-pipeline-how-to-change-to-another-folder

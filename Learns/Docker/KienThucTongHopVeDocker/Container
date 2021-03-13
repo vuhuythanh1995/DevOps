@@ -8,3 +8,6 @@ Example :
 	$ -v (thư mục từ máy host)/(thư mục bên trong container) 
 -- Để check xem đang có bao nhiêu container ta dùng lệnh :
 $ docker ps
+
+Để vào bên trong container ta dùng Docker exec:
+$ docker exec -it jenkins sh
