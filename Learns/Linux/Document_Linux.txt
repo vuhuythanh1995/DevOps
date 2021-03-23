@@ -1,0 +1,15 @@
+Linux Distro = kernal + softwave.
+Redhat & Ubuntu.
+
+- Xây dựng hệ thống phải nắm rõ Common Directories.
+- Server 2 đường riêng biệt : 1 quản trị 1 admin. để backup server. (2 đường điện riêng biệt + 1 đường ăc - qui)
+- Kernel space (nhân hệ điều hành) /bin , user space /usr .
+/etc configuration file.
+/var chứa log.
+
+- Cloud AI , hoặc dùng AI để check bảo mật server.
+/cgroup liên quan đến bảo mật, sử dụng quyền bao nhiên tài nguyên v.v , liên quan đến K8S , quản lý mấy ảo. 
+
+Biến môi trường : chữ in hoa. đường dẫn tuyệt đối , đường dẫn tương đối.
+Lưu trữ cmd.
+permission : phân quyền. [Quan trọng trong hệ thống]
