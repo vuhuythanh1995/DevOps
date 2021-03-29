@@ -1,0 +1,26 @@
+Trong Docker có 2 loại volume :
+-- bind mount.
+Thực hiện tạo một container sử dụng volume kiểu bind mount như sau:
+
+$ mkdir -p /root/web_test && cd /root/web_test
+
+$ docker run --name apache_test2 -p 8080:80 -p 443:443 -v /root/web_test:/var/www/ -d eboraas/apache
+
+==============================================================================================
+-- docker mananged volume.
+Sử dụng kiểu docker mananged volume. Ta tạo volume bằng lệnh:
+
+$ docker volume create --name avolume
+
+Ta tạo một container với kiểu docker mananged volume:
+
+$ docker run --name apache_test3 -p 8081:80 -p 444:443 -v avolume:/var/www/ -d eboraas/apache
+
+
+==============================================================================================
+Bind mount : mount dữ liệu từ container sang folder trực tiếp từ máy host.
+Docker managed volume : mount dữ liệu từ container sang folder (/var/lib/docker/volumes/) của docker tại máy host.
+
+Tài liệu : 
+https://docker-ghichep.readthedocs.io/en/latest/docker-thuchanh-volume/
+

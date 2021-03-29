@@ -1,0 +1,7 @@
+How to create a permanent alias in ubuntu
+https://www.youtube.com/watch?v=soi7Urg3KZI
+
+$ cd /home/october
+$ code .bashrc
+
+add alias in last line.

@@ -1,3 +1,4 @@
+Buổi 1:
 Linux Distro = kernal + softwave.
 Redhat & Ubuntu.
 
@@ -8,8 +9,33 @@ Redhat & Ubuntu.
 /var chứa log.
 
 - Cloud AI , hoặc dùng AI để check bảo mật server.
-/cgroup liên quan đến bảo mật, sử dụng quyền bao nhiên tài nguyên v.v , liên quan đến K8S , quản lý mấy ảo. 
+/cgroup liên quan đến bảo mật, sử dụng quyền bao nhiên tài nguyên v.v , liên quan đến K8S , quản lý mấy ảo.
 
 Biến môi trường : chữ in hoa. đường dẫn tuyệt đối , đường dẫn tương đối.
 Lưu trữ cmd.
 permission : phân quyền. [Quan trọng trong hệ thống]
+- - - (user group other)
+======================================================================================================================
+Buổi 2:
+Server phải dùng ít nhất 2 card để dự phòng. test HA.
+TÌm ngưỡng tải. (Tính tải, Tối ưu) target -> simulate
+CINT-rate (khả năng tính toán CPU) tính TPS => tính tải chạy được bao nhiêu TPS.
+-	Alias (đổi tên cú pháp để người dùng ko dùng được).
+Cảnh báo giám sát trước khi server hỏng 
+.bash_profile : lưu thông tin https://viblo.asia/p/tim-hieu-bash-shell-in-linux-bJzKmXvP59N
+
+- monitor. (giám sát hệ thống)
+$ Sort //(sắp xếp file)
+$ zcat // đọc file nén mà ko cần giải nén. (không tốn tài nguyên)
+
+IO Redirection (chuyển hướng)
+$> ghi đè
+$>> nối
+$< đẩy ngược lại nội dung của file vào command
+
+SFTP ?? Giống Scp nhưng dùng bảo mật
+PuTTY ?? 
+
+Cron : tác vụ lặp đi lặp lại. hỗ trợ đến mức phút (m). 
+* Day off week (0-6) 0 là chủ nhật
+
