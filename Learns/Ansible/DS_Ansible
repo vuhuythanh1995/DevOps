@@ -1,0 +1,65 @@
+					Thiết kế file cấu hình hệ thống CWP bằng ansible.
+
+- Sử dụng ssh keypair. Có nghĩa là ta sẽ tạo ra private key và public key trên node AnisbleServer và copy chúng sang các node client (hay còn gọi là các host).
+- Đứng tại user root của node AnsibleServer và thực hiện bước tạo key
+$ ssh-keygen
+- Thực hiện copy file key sang các node còn lại
+$ ssh-copy-id root@192.168.80.122
+Nhập passwork của máy node , lần sau ssh vào sẽ không cần phải nhập passwork.
+=========================================================================================================================================================
+- Inventory Host: Khai báo host group /etc/ansible/hosts
+Khai báo các địa chỉ IP thành từng nhóm nhỏ với những cài đặt giống nhau.
+
+$ vi /etc/ansible/hosts
+
+[group_name]
+client1 ansible_host=ip ansible_port= ansible_user=root
+
+- Kiểm tra sau khi khai báo trong hosts
+$ ansible all -m ping
+
+- Ansible playbook: file yml (YAML)
+$ - host : all
+$   remote_user: root
+1. copy file /opconsole.tgz từ management-node sang các máy host. // cp /opconsole.tgz
+$   tasks:
+$ 	- name: copy file from the node manager to the client
+$   	copy:
+$		src: url from node manager
+$		dest: client
+$		owner: root
+$		group: root
+$		mode: '0660'
+
+
+2. giải nén file opconsole.tgz // tar -xzvf opconsole.tgz (archive, unarchive)
+https://docs.ansible.com/ansible/2.9/modules/unarchive_module.html#unarchive-module
+
+$ 	- name: Extract foo.tgz into /var/lib/foo
+$   	unarchive:
+$   		src: foo.tgz
+$   		dest: /var/lib/foo
+
+
+3. truy cập vào thư mục vừa được giản nén. // cd opconsole (shell)
+https://docs.ansible.com/ansible/2.9/modules/shell_module.html
+$  	 args:
+    		chdir: somedir/
+
+
+4. chạy file install.sh // sudo ./install.sh ip_local ip_gateway (2.1) (shell)
+https://docs.ansible.com/ansible/2.9/modules/shell_module.html
+
+$   	shell:
+$		 cmd: sudo ./install.sh ip_local ip_gateway (2.1) "{{inventory_hostname}}"
+$		 cmd: sudo ./install.sh "{{inventory_hostname}}" ip_gateway
+
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ Redhat & Ubuntu.
 
 - Xây dựng hệ thống phải nắm rõ Common Directories.
 - Server 2 đường riêng biệt : 1 quản trị 1 admin. để backup server. (2 đường điện riêng biệt + 1 đường ăc - qui)
-- Kernel space (nhân hệ điều hành) /bin , user space /usr .
+- Kernel space (nhân hệ điều hành) /bin , user space /usr.
 /etc configuration file.
 /var chứa log.
 
@@ -34,8 +34,24 @@ $>> nối
 $< đẩy ngược lại nội dung của file vào command
 
 SFTP ?? Giống Scp nhưng dùng bảo mật
-PuTTY ?? 
+PuTTY : dùng để điều khiển server qua mạng Internet, hỗ trợ nhiều giao thức mạng như SCP,SSH,... dùng cho các hệ điều hành bây giờ. 
 
 Cron : tác vụ lặp đi lặp lại. hỗ trợ đến mức phút (m). 
 * Day off week (0-6) 0 là chủ nhật
+======================================================================================================================
+Buổi 3:
+Networking.
+
+- dhcp ??? (DHCP server) (quy trình cấp phát IP động ???).
+- bảng tin ARP (thông báo địa chỉ IP)
+- ipv4 : 8bit.8bit.8bit.8bit (4 tỉ thiết bị)
+- MAC (layer 2, mạng LAN) (layer 3 dùng IP)
+- VXLAN (k8s)???
+
+- ping (ICMP): 9x ms cao , 3ms thap
+
+- Shell History and Autocompletion : lưu trong /home/user/.bash_history 
+- TAB : index metadata.
+- SWAP linux : https://wiki.matbao.net/swap-la-gi-moi-thong-tin-can-biet-ve-ram-ao-swap/ (nen swap off)
+- Disk management : chia o cung
 
