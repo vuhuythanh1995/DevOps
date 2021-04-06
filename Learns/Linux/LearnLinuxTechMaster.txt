@@ -42,16 +42,25 @@ Cron : tác vụ lặp đi lặp lại. hỗ trợ đến mức phút (m).
 Buổi 3:
 Networking.
 
-- dhcp ??? (DHCP server) (quy trình cấp phát IP động ???).
-- bảng tin ARP (thông báo địa chỉ IP)
-- ipv4 : 8bit.8bit.8bit.8bit (4 tỉ thiết bị)
-- MAC (layer 2, mạng LAN) (layer 3 dùng IP)
-- VXLAN (k8s)???
+- dhcp ??? (DHCP server) (quy trình cấp phát IP động ???). https://onedrive.live.com/?authkey=%21AHqpApbZfHOX90E&cid=7F63085B39FF249E&id=7F63085B39FF249E%21516402&parId=7F63085B39FF249E%21516430&o=OneUp
 
-- ping (ICMP): 9x ms cao , 3ms thap
+- bảng tin ARP : chuyển địa chỉ IP thành MAC tương ứng (thông báo địa chỉ IP) https://onedrive.live.com/?authkey=%21AHqpApbZfHOX90E&cid=7F63085B39FF249E&id=7F63085B39FF249E%21516404&parId=7F63085B39FF249E%21516430&o=OneUp
+	ARP là giao thức mạng được dùng để tìm địa chỉ phần cứng (MAC) của thiết bị từ địa chỉ IP. (MAC là tên chủ nhà , IP là địa chỉ của nhà, MAC không thay đổi , IP có thể thay đổi)
+	Được dùng khi 1 thiết bị muốn giao tiếp với các thiết bị khác trên local network (ví dụ trên mạng Ethernet mà yêu cầu địa chỉ vật lý trước khi gửi packets) Thiết bị sẽ gửi request ARP có chứa địa chỉ IP của thiết bị nhận. 
+
+
+- ipv4 : 8bit.8bit.8bit.8bit (4 tỉ thiết bị)
+- MAC (layer 2, mạng LAN) (layer 3 dùng IP) 12 kí tự Hexa , được gắn vào card mạng. 3 cặp kí tự đầu : nhà sản xuất , 3 cặp kí tự sau là seri sản phẩm
+- VXLAN (k8s)??? https://viblo.asia/p/vxlan-cong-nghe-ao-hoa-dc-1Je5EQLL5nL
+
+- ping (ICMP): 9x ms cao , 3x ms thap
 
 - Shell History and Autocompletion : lưu trong /home/user/.bash_history 
 - TAB : index metadata.
-- SWAP linux : https://wiki.matbao.net/swap-la-gi-moi-thong-tin-can-biet-ve-ram-ao-swap/ (nen swap off)
-- Disk management : chia o cung
+- SWAP linux : https://wiki.matbao.net/swap-la-gi-moi-thong-tin-can-biet-ve-ram-ao-swap/ (nên swap off)
+- Disk management : chia ổ cung
+
+- Hub : (layer 1) (Khi có 1 yêu cầu gửi thông điệp trong hub , tất cả các cổng trong hub đều phải nhận gây mất gói tin , tắc nghẽn băng thông)
+- Switch (layer 2) (cơ chế hỏi tất cả các cổng trên switch để tìm địa chỉ MAC (broadcast) để tìm IP cần nhận gói tin nằm ở cổng nào. 1 cổng mạng ko nên vượt quá 200 host lúc đó bão broadcast sẽ xảy ra)
+- Router (layer 3) 
 
