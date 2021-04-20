@@ -1,0 +1,68 @@
+K8S : môi trường quản lý của Docker.
+1.Nhập môn
+2.Deployment
+3.Service
+4.Package management
+5.CI/CD
+6.Logging monitoring
+7.Persistent storage
+8.Zero downtime 
+
+===================================================
+1. Nhập môn
+- Chia nhỏ HW ra để nhiều OS sử dụng cho đỡ lãng phí -> VM (virtual machine phổ biến,thịnh hành 10-20 năm trước)
+Phần cứng phát triển hơn -> tối ưu HW hơn -> container. ( dùng chung OS và kernel)
+
+- Chạy 1 app trên container Ubuntu trên OS Centos -> thực chất là vẫn chạy trên OS Centos và 1 phần môi trường của Ubuntu (chứ ko phải chạy trên OS ubuntu)
+	Container là ảo hóa process.
+	Docker là 1 bộ công cụ để tạo ra Container.
+
+- Container Orchestration : 
+
+
+- Docker Swam : Hướng tới sự đơn giản. 
+Docker Desktop nhúng K8s vào trong.
+K8s : hệ thống phức tạp.
+Giảm nguồn lực khi deploy app. Nhưng maintain phức tạp khi làm on premise.
+
+- Kiến trúc K8S
+- master : DB : etcd , sql ... (Chạy riêng vì tốn tài nguyên 3-5 node)
+	Controller manager : làm mọi công việc tính toán ( chạy riêng để đảm bảo HA 3-5 node )
+	API server : expose API của server ra ngoài. (devops dùng tool thông qua API để quản lý)
+	Scheduler : chọn container chạy ở node nào.
+	Không nên chạy app trong master vì chiếm tài nguyên.
+- node : Kubelet : start / stop container.
+	Service proxy : Network.
+	App nên chạy trên node ( user đăng nhập vào node )
+- CNI network : nw chung ( driver Calico, Weave Net ... )
+
+- Rancher : chạy trên k3s , tạo ra k3s rồi cài đặt Rancher trên k3s. (yêu cầu cơ bản : ubuntu + docker -> run Rancher)
+
+- Tương tác với k8s:
+kubectl : file kubeconfig (url , authen) https://kubernetes.io/vi/docs/tasks/tools/install-kubectl/
+https://kubernetes.io/vi/docs/tasks/tools/install-kubectl/
+
+- K8s không chạy docker runtime ??? : 
+	runc để ảo hóa process. (chuẩn OCI)
+	runc : start/stop
+	runtime : containerd.
+
+- Namespace : chia resources (90%) ra vùng nhỏ để đỡ trùng nhau. (quản lý về tên)
+Tài nguyên của cluster (10%)
+ https://cloudfun.vn/threads/nhap-mon-kubernetes-namespaces.281/#:~:text=Namespace%20l%C3%A0%20c%C6%A1%20ch%E1%BA%BF%20t%E1%BB%95,trong%20ch%C3%ADnh%20x%C3%A1c%20m%E1%BB%99t%20namespace.&text=Namespaces%20c%C5%A9ng%20gi%C3%BAp%20d%E1%BB%85%20d%C3%A0ng,slices%20c%E1%BB%A5%20th%E1%BB%83%20c%E1%BB%A7a%20cluster.
+group app : liên quan bộ phận , chức năng, quản lý resources
+- Pod : có 1 hoặc n container. ( có những cont luôn luôn phải chạy với nhau , cải tiến => tổ chức pod )
+Pod : chạy hết cont hoặc không chạy tí gì.
+share : volume data
+	network ( port của mỗi cont phải khác nhau nếu ko conflic )
+Mô hình : sidecar : Node chính node phụ.
+	Adapter : 1 container app 
+		  1 container làm proxy.
+	Ambassador : 1 chính 1 phụ , phụ làm điều phối môi trường cho chính
+Định nghĩa pod với yaml
+
+
+
+
+
+

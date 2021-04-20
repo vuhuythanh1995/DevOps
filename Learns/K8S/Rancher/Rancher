@@ -1,0 +1,8 @@
+install :
+$ sudo docker run -d --restart=unless-stopped -p 8888:80 -p 8443:443 rancher/rancher:v2.4.6
+
+go to : https://<host-ip>:8443
+https://192.168.2.55:8443
+
+account: admin
+pass: 123456

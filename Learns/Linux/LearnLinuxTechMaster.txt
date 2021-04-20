@@ -63,4 +63,31 @@ Networking.
 - Hub : (layer 1) (Khi có 1 yêu cầu gửi thông điệp trong hub , tất cả các cổng trong hub đều phải nhận gây mất gói tin , tắc nghẽn băng thông)
 - Switch (layer 2) (cơ chế hỏi tất cả các cổng trên switch để tìm địa chỉ MAC (broadcast) để tìm IP cần nhận gói tin nằm ở cổng nào. 1 cổng mạng ko nên vượt quá 200 host lúc đó bão broadcast sẽ xảy ra)
 - Router (layer 3) 
+======================================================================================================================
+Buổi 4:
+sdn
+
+https://www.google.com/search?q=sdn+l%C3%A0+g%C3%AC&sxsrf=ALeKk038rd7A77KQORhcwsiGh-Zb2433sA%3A1617969723753&ei=O0JwYOS_LYvX0ATKuoRQ&oq=sdn+&gs_lcp=Cgdnd3Mtd2l6EAMYADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BwgAEEcQsAM6BAgjECc6CAgAELEDEIMBOgQIABBDOgcIABCxAxBDOgUIABCxAzoECAAQClCspKABWNyroAFg9ragAWgCcAJ4AIABiwGIAfYDkgEDMy4ymAEAoAEBqgEHZ3dzLXdpesgBA8ABAQ&sclient=gws-wiz
+
+IP : định danh và routing (thuật toán routing). 4 octet 
+http://notes.viphat.work/so-luoc-ve-dia-chi-ip
+ipv4 32 bit. x.x.x.x 
+ivp6 128 bit (vdu như ip của điện thoại)
+1 server sẽ có nhiều cổng mạng , 1 cổng mạng có nhiều interface.
+VLAN.
+1 địa chỉ ip có thể gắn nhiều tên miền.
+1 tên miền có thể gắn nhiều ip.
+
+NAT ?? 
+Network ID : đại diện cho cái chung của thực thể : 192.168.1.x
+Host ID : đại diện cho 1 thực thể : x.x.x.1
+Phương thức gửi tin.
+public ip và private ip.
+
+submask and ip. 
+11111111.11111111.11111111.0
+and
+   192  . 168    . 1      .180
+   192  . 168    . 1      .0
+$ netstat 
 
