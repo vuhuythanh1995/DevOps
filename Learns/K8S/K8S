@@ -25,21 +25,22 @@ Docker Desktop nhúng K8s vào trong.
 K8s : hệ thống phức tạp.
 Giảm nguồn lực khi deploy app. Nhưng maintain phức tạp khi làm on premise.
 
-- Kiến trúc K8S
-- master : DB : etcd , sql ... (Chạy riêng vì tốn tài nguyên 3-5 node)
+- Kiến trúc K8S:
+cluster : Chứa ít nhất 1 master node và 1 worker node ( 1 node là 1 máy vật lý hoặc máy ảo)
++ master : DB : etcd , sql ... (Chạy riêng vì tốn tài nguyên 3-5 node)
 	Controller manager : làm mọi công việc tính toán ( chạy riêng để đảm bảo HA 3-5 node )
 	API server : expose API của server ra ngoài. (devops dùng tool thông qua API để quản lý)
 	Scheduler : chọn container chạy ở node nào.
 	Không nên chạy app trong master vì chiếm tài nguyên.
-- node : Kubelet : start / stop container.
++ node : Kubelet : start / stop container.
 	Service proxy : Network.
 	App nên chạy trên node ( user đăng nhập vào node )
-- CNI network : nw chung ( driver Calico, Weave Net ... )
++ CNI network : nw chung ( driver Calico, Weave Net ... )
 
 - Rancher : chạy trên k3s , tạo ra k3s rồi cài đặt Rancher trên k3s. (yêu cầu cơ bản : ubuntu + docker -> run Rancher)
 
 - Tương tác với k8s:
-kubectl : file kubeconfig (url , authen) https://kubernetes.io/vi/docs/tasks/tools/install-kubectl/
+	kubectl : file kubeconfig (url , authen) (Công cụ command-line trong Kubernetes, cho phép bạn thực thi các câu lệnh trong Kubernetes clusters)
 https://kubernetes.io/vi/docs/tasks/tools/install-kubectl/
 
 - K8s không chạy docker runtime ??? : 
@@ -49,6 +50,8 @@ https://kubernetes.io/vi/docs/tasks/tools/install-kubectl/
 
 - Namespace : chia resources (90%) ra vùng nhỏ để đỡ trùng nhau. (quản lý về tên)
 Tài nguyên của cluster (10%)
+ https://viblo.asia/p/kubernetes-hoc-cach-su-dung-kubernetes-namespace-co-ban-ByEZkM845Q0#_tai-sao-nen-su-dung-namespace-1
+
  https://cloudfun.vn/threads/nhap-mon-kubernetes-namespaces.281/#:~:text=Namespace%20l%C3%A0%20c%C6%A1%20ch%E1%BA%BF%20t%E1%BB%95,trong%20ch%C3%ADnh%20x%C3%A1c%20m%E1%BB%99t%20namespace.&text=Namespaces%20c%C5%A9ng%20gi%C3%BAp%20d%E1%BB%85%20d%C3%A0ng,slices%20c%E1%BB%A5%20th%E1%BB%83%20c%E1%BB%A7a%20cluster.
 group app : liên quan bộ phận , chức năng, quản lý resources
 - Pod : có 1 hoặc n container. ( có những cont luôn luôn phải chạy với nhau , cải tiến => tổ chức pod )
@@ -59,7 +62,37 @@ Mô hình : sidecar : Node chính node phụ.
 	Adapter : 1 container app 
 		  1 container làm proxy.
 	Ambassador : 1 chính 1 phụ , phụ làm điều phối môi trường cho chính
-Định nghĩa pod với yaml
+
+- Định nghĩa pod với yaml:(trong file yaml không dùng tab,dùng space) (chúng ta dùng file .yaml để cấu tạo lên pods)
+apiVersion: version của Kubernetes API 
+kind: Chỉ định thành phần cần tạo (ở đây là Pod)
+metadata: Tên của Pod
+spec: Mô tả về các thông số kỹ thuật của Pod
+container: chứa tên image của container cần chạy trong pod
+name: tên container
+containerPort: cổng đầu ra ứng dụng của container
+
+===================================================
+2. Deployment
+
+Replica Set: ứng dụng dạng API
+Stateful Set: ứng dụng dạng DB
+Daemon Set: ứng dụng dạng moniter
+
+- Replica Set : nhân bản pod , quản lý số lượng tăng giảm , không quản lý thay đổi nội dung. => sinh ra Deployment -> thay đổi nội dung => tạo ra replica mới thay thế thằng cũ. (dùng trong trường hợp Stateless) tên random.
+maxSurge : số pod thêm tối đa mong muốn. 
+maxUnavailable : số pod giảm tối đa mong muốn. 
+- Stateful set : Giữ tên pod và giữ được vai trò (dùng cho ứng dụng dạng DB) : pod 0 luôn luôn đi vs volume 0;
+=> chạy cluster DB nhiều con.
+- Daemon Set : 1 node - 1 pod. ( log, moniter )
+
+performance : dùng VM nhiều hơn vì qua docker dùng 2 lớp ảo hóa (lưu trữ DB)
+
+ConfigMap và Secret : dữ liệu khi ở trong DB được lưu dưới 1 trong 2 dạng.
+
+config - volume => folder ( something , somethingelse.json)
+subPath : của container , mount 1 file cụ thể , không có subPath là mount cả 1 folder
+mountPath: địa chỉ muốn mount  
 
 
 
