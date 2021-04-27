@@ -95,6 +95,25 @@ subPath : của container , mount 1 file cụ thể , không có subPath là mou
 mountPath: địa chỉ muốn mount  
 
 
+===================================================
+3. Service
+
+Network trong Pod : container trong pod share nhau network Namespace ( chứa ip table của các container )
+NWork giữa các Pod trong 1 host : request hỏi bảng MAC của host xem có chứa ip cần tìm không , => đẩy gói tin ra pod cần tìm và ngược lại.
+Network giữa các pod trên nhiều host : 
+kubeproxy : tạo ra hệ thống ip nội bộ trong k8s.
+
+Service : Không proxy : chỉ chạy DNS -> cache ip -> khó control traffic.
+	Kèm proxy : Tạo ra ip ảo , là rule của kubeproxy (iptable??)
+		ClusterIP	NodePort	LoadBalancer 
+		pod->pod	host->host	LB cho HA
+		pod gọi nhau    VM gọi nhau     Client gọi nhau
+service DNS : service-name.namespace.service.cluster.local. ( . để DNS ngắt tên )
+ingress : Ingress controller ( tự cài thêm ) 
+
+cài K9s
+
+
 
 
 
