@@ -46,3 +46,6 @@ $ docker volume prune // xoa cac volume khong dung den
 =================================================================================================
 Chanel về 
 https://www.youtube.com/watch?v=r6JiWwh-08c&list=PLwJr0JSP7i8At14UIC-JR4r73G4hQ1CXO
+
+Documents về docker
+https://docs.docker.com/docsarchive/

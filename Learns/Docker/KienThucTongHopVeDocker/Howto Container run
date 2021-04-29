@@ -1,0 +1,22 @@
+Container được tạo ra từ những quá trình sau : https://cloudfun.vn/threads/lam-the-nao-cac-container-cach-ly-cac-qua-trinh-su-dung-linux-namespaces.155/
+	Khả năng đặc biệt của Container là có các tệp khác nhau độc lập với máy chủ , đây là cách các Docker image khác nhau chạy nhiều OS khác nhau cùng chạy trên 1 máy chủ. Chroot cung cấp khả năng cho một quá trình bắt đầu với một thư mục root khác với hệ điều hành chủ. Điều này cho phép các tệp khác nhau xuất hiện trong thư mục gốc.
++	chroot -> Tạo ra 1 mẩu phần mềm chạy bên trong 1 kiểu cấu trúc thư mục root lỗi, tức là làm cho phần mềm bị đánh lừa và nghĩ rằng không có gì bên ngoài cấu trúc thư mục đó, vì vậy sẽ cách ly phần còn lại của hệ thống với bất cứ vấn đề có tiềm ẩn sự ảnh hưởng gây hại trong việc chạy phần mềm này. 
+chroot là 1 cách để vào 1 thư mục và giả mạo thư mục đó với bất kỳ thứ gì được thực hiện bên trong
+
+Nguồn : https://qastack.vn/ubuntu/197772/what-are-the-differences-between-sudo-su-visudo-chroot-and-gksu
+https://quantrimang.com/su-dung-chroot-de-han-che-cac-dich-vu-69541#:~:text=Khi%20s%E1%BB%AD%20d%E1%BB%A5ng%20chroot%2C%20m%E1%BB%99t,h%E1%BA%A1i%20trong%20vi%E1%BB%87c%20ch%E1%BA%A1y%20ph%E1%BA%A7n
+
++	unshared: Cô lập các không gian cho quy trình và filesystem,
+chạy 1 chương trình mới trong namespace riêng của nó, không chia sẻ với tiến trình nào khác
+
++	cgroups: Áp dụng các hạn chế mà quy trình có thể sử dụng (giới hạn) vào bộ nhớ, mạng , CPU ... 
+
+nguồn : https://mrhien.info/blog/gioi-thieu-ve-linux-control-groups-cgroups/
+
+AppArmor : AppArmor là một cấu hình do ứng dụng xác định, mô tả phần nào của hệ thống mà một quy trình có thể truy cập.
+
+Seccomp : Chế độ tính toán an toàn (seccomp) là một tính năng của Linux Kernel. Bạn có thể sử dụng nó để hạn chế các tác vụ có sẵn trong vùng chứa. Lời gọi hệ thống seccomp() hoạt động trên trạng thái seccomp của quá trình gọi. Bạn có thể sử dụng tính năng này để hạn chế quyền truy cập vào ứng dụng của mình.
+
+Capabilities : capabilites là những đơn vị quyền (privilege) có thể được enable hoặc disable. Đa số mọi người nghĩ rằng root là có tất cả các quyền. Không hẳn như vậy, user root sở hữu tất cả các capability mới là có tất cả các quyền.
+Capabilities là các nhóm về những gì một quy trình hoặc người dùng có quyền thực hiện. Một quy trình có thể giảm nhiều capabilitie nhất có thể để đảm bảo nó an toàn.
+https://whitehat.vn/threads/tim-hieu-ve-linux-capability-trong-docker-phan-1.13011/
