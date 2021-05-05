@@ -1,0 +1,33 @@
+	Với mỗi container , 1 cgroup được tạo ra với mỗi hệ thống cấp bậc
+	Đối với image : chỉ có thể đọc, với mỗi thay đổi trong image là chúng ta thay đổi trong bản sao của image
+
+$ docker diff <ID container> => so sánh images gốc với bản sao.
+$ docker commit <ID container> => tạo ra bản sao đã thay đổi so với images gốc.
+Dockerfile : tự động quá trình commit lại images gốc
+
+	$ docker exec -it <ID container> /bin/bash
+	Muốn truy cập vào 1 container thì điều kiện đầu tiên là container đó phải được start, không thể exec vào 1 container thông qua image vì 1 image có thể tạo ra rất nhiều container.
+
++	shell syntax và exec syntax
+	$ docker history <ID container> // mọi layer trong image sẽ được hiển thị ở đây.
+	Trong Dockerfile :
+	Run apt-get update (shell syntax) => sẽ chỉ thị 1 lệnh trong /bin/sh -c để thực thi.
+	Run ["apt-get","update"] (exec syntax) => sẽ chỉ thị 1 lệnh chính xác để thực thi. 
+
+	So sánh exec syntax và shell syntax :
+
+shell => thêm vào các biến môi trường và biểu thức shell khác, tạo ra 1 quy trình bổ xung /bin/sh -c để phân tích cú pháp, yêu cầu /bin/sh -c tồn tại trong container.
+exec => không cần đối số , không tạo ra quy trình bổ sung , không yêu cần bin/sh tồn tại trong container
+
+	CMD và ENTRYPOINT
+CMD : định nghĩa câu lệnh chạy sau khi start container. hoặc làm đối số mặc định cho ENTRYPOINT khi không có tham số truyền vào.
+ENTRYPOINT : cung cấp lệnh và đối số cho một container thực thi khi start container.
+
+$ docker run -it --entrypoint bash <nameImage> // truy cập vào container mà nếu không có --entrypoint thì bash sẽ thành đối số cho container
+
+	Trong Dockerfile cần quan tâm đến : 	1. Số lớp. (layer)
+						2. Kích thước của hình ảnh. (size of image)
+$ docker inspect <IDcontainer> // <=> như $ cat <file> => sẽ cho ra 1 bản đồ JSON rất chi tiết
+	
+	copy file từ trong container ra ngoài host :
+$ docker cp <containerID>:/url . < . is the host >

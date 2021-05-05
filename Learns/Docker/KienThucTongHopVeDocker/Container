@@ -1,5 +1,5 @@
 -- Container là nơi thực thi các cài đặt từ Image , khi ta đã có 1 Image được build sẵn , dùng lệnh docker run để chạy container.
-$ docker run -d (chạy ngầm) --name (tên container) tên Image
+$ docker run -d (chạy ngầm) --name (tên container) <tên Image>
 Đối với những ứng dụng cần Expose (làm lộ)  ip ra ngoài cần thêm option -p 
 Example : 
 	$ -p 8080:80 =>> http://locallhost:8080/
