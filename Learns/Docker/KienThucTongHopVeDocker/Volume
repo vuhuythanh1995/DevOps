@@ -7,14 +7,14 @@ $ mkdir -p /root/web_test && cd /root/web_test
 $ docker run --name apache_test2 -p 8080:80 -p 443:443 -v /root/web_test:/var/www/ -d eboraas/apache
 
 ==============================================================================================
--- docker mananged volume.
+-- docker managed volume.
 Sử dụng kiểu docker mananged volume. Ta tạo volume bằng lệnh:
 
 $ docker volume create --name avolume
 
 Ta tạo một container với kiểu docker mananged volume:
 
-$ docker run --name apache_test3 -p 8081:80 -p 444:443 -v avolume:/var/www/ -d eboraas/apache
+$ docker run --name apache_test3 -p 8081:80 -p 444:443 -v volume:/var/www/ -d eboraas/apache
 
 
 ==============================================================================================

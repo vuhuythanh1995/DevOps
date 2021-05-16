@@ -9,7 +9,7 @@ Redhat & Ubuntu.
 /var chứa log.
 
 - Cloud AI , hoặc dùng AI để check bảo mật server.
-/cgroup liên quan đến bảo mật, sử dụng quyền bao nhiên tài nguyên v.v , liên quan đến K8S , quản lý mấy ảo.
+/cgroup liên quan đến bảo mật, sử dụng quyền bao nhiên tài nguyên v.v , liên quan đến K8S , quản lý máy ảo.
 
 Biến môi trường : chữ in hoa. đường dẫn tuyệt đối , đường dẫn tương đối.
 Lưu trữ cmd.

@@ -9,6 +9,10 @@
 -- None :
 	Các container được thiết lập cấu hình network này sẽ không được cấu hình mạng.
 
+Mapping và Export :
+-- Mapping port : nhằm giúp thế giới bên ngoài giao tiếp được với container.
+-- Export port : nhằm giúp các container có thể giap tiếp được với nhau.
+
 Tài liệu Docker-Network.
 https://docker-ghichep.readthedocs.io/en/latest/docker-network/#12-bridge
 docker service create --name node-app -p 8000:3000 --replicas=4 --env MONGODB_URI=mongodb://mongodb:27017/demo --env PORT=3000 --network=myapp vhthanh/demo-service1:latest

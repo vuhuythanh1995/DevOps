@@ -1,3 +1,7 @@
-Docker Compose là công cụ cho phép run app với nhiều Docker containers 1 cách dễ dàng hơn. Docker Compose cho phép bạn config các command trong dile docker-compose.yml để sử dụng lại.
+Docker Compose là công cụ cho phép run app với nhiều Docker containers 1 cách dễ dàng hơn. Docker Compose cho phép bạn config các command trong file docker-compose.yml để sử dụng lại.
 run file .yml
 $ docker-compose up -d
+
+Muon exec vao 1 container : 
+
+$ docker-compose exec [service/container] sh 
