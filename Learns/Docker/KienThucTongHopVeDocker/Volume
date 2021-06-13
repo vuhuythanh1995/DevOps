@@ -24,3 +24,6 @@ Docker managed volume : mount dữ liệu từ container sang folder (/var/lib/d
 Tài liệu : 
 https://docker-ghichep.readthedocs.io/en/latest/docker-thuchanh-volume/
 
+Volumes are not copying or synchronizing files between the host and the container, Changes made in the host are immediately visible in the container (and vice versa) : Volumes không sao chép hay đồng bộ files giữa máy chủ và container.
+Nó ánh xạ từ máy chủ đến container. Các thay đổi được thực hiện trong máy chủ lưu trữ hiển thị ngay lập tức trong vùng chứa (và ngược lại)
+

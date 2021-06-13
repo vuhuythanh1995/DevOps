@@ -1,0 +1,5 @@
+Pod là 1 thứ không bền vững, 1 pod có thể biến mất bất cứ lúc nào và được thay thế bởi repliationController. 
+Mỗi pod sẽ có 1 địa chỉ ip riêng, khác với địa chỉ ip của pod được thay thế. 
+Đây là lúc service ra đời để giải quyết vấn đề địa chỉ IP của nhóm luôn thay đổi, cũng như hiển thị nhiều pod tại 1 cặp cổng và IP không đổi duy nhất. Khi 1 service được tạo, nó sẽ được nhận 1 IP tĩnh không đổi trong suốt thời gian tồn tại của service.
+Thay vì kết nối trực tiếp đến pod , client sẽ kết nối với service thông qua địa chỉ IP tĩnh không đổi của nó. Service đẩm bảo 1 trong các pod nhận được kết nối, bất kể pod hiện đang chạy ở đâu và địa chỉ IP của pod là gì.
+Các service đại diện cho 1 vị trí tĩnh cho 1 nhóm pod gồm 1 hoặc nhiều pod đều cung cấp cùng 1 service. Các yêu cầu đến IP và port của service sẽ được chuyển tiếp tới IP và port của 1 trong các pod thuộc service tại thời điểm đó.

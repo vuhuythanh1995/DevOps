@@ -1,0 +1,14 @@
+Nơi lưu trữ images
+login :
+
+ $ docker login 
+vhthanh
+1810vuhuythanh1995
+
+Build images để push lên dockerhub:
+
+ $ docker build -t <hub-user>/<repo-name>[:<tag>] .
+
+Push images lên dockerhub:
+
+ $ docker push <hub-user>/<repo-name>:<tag>

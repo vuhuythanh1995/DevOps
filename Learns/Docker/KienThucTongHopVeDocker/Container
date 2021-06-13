@@ -11,3 +11,6 @@ $ docker ps
 
 Để vào bên trong container ta dùng Docker exec:
 $ docker exec -it jenkins sh
+
+Dùng curl để check container có hoạt động hay không
+$ curl localhost:8080

@@ -1,0 +1,15 @@
+-- Minikube là 1 bộ cài đặt K8s bằng cách tạo máy ảo trên máy tính của bạn và triển khai 1 cluster đơn giản bên trong máy ảo chỉ bao gồm 1 Node.
+
+$ minikube start
+
+-- Sử dụng kubectl để triển khai và tương tác với minikube từ terminal. ( kubectl sẽ gọi đến API của k8s ).
+
+
+
+-- K8s không triển khai trực tiếp container mà sẽ triển khai trên pod, mỗi pod sẽ chứa 1 hoặc nhiều container.
+-- Đối với hệ thống K8s sẽ có nhiều node gồm 1 node master và 1 hoặc nhiều node worker, mỗi node sẽ chứa 1 hoặc nhiều pod.
+
+Pod : mỗi pod sẽ có 1 địa chỉ IP riêng, nhưng địa chỉ này nằm trong cluster và không thể truy cập được từ bên ngoài, để truy cập bên ngoài được cần phải expose service object, loại LoadBalancer, bởi vì tạo 1 service loại ClusterIP cũng chỉ để giao tiếp trong cluster, bằng cách tạo LoadBalancer , 1 bộ cân bằng tải sẽ  được tạo ra và bạn có thể kết nối với Pod thông qua IP công khai của trình cân bằng tải.
+
+
+

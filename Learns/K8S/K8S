@@ -16,6 +16,7 @@ Phần cứng phát triển hơn -> tối ưu HW hơn -> container. ( dùng chun
 - Chạy 1 app trên container Ubuntu trên OS Centos -> thực chất là vẫn chạy trên OS Centos và 1 phần môi trường của Ubuntu (chứ ko phải chạy trên OS ubuntu)
 	Container là ảo hóa process.
 	Docker là 1 bộ công cụ để tạo ra Container.
+*** Bằng cách thiết lập K8s trên máy chủ và sử dụng nó để chạy ứng dụng là đã tách ứng dụng của mình ra khỏi cơ sở hạ tầng, khi chạy k8s sẽ chọn node thích hợp nhất để chạy ứng dụng của bạn và dựa trên mô tả về yêu cầu tài nguyên của ứng dụng và các tài nguyên có sẵn trên mỗi node.
 
 - Container Orchestration : 
 
@@ -33,7 +34,7 @@ cluster : Chứa ít nhất 1 master node và 1 worker node ( 1 node là 1 máy 
 	Scheduler : chọn container chạy ở node nào.
 	Không nên chạy app trong master vì chiếm tài nguyên.
 + node : Kubelet : start / stop container.
-	Service proxy : Network.
+	Service proxy : Network. ( Kube-proxy ) sẽ hiển thị tất cả container trong service 1 địa chỉ IP tĩnh duy nhất , Kube-proxy sẽ đảm bảo các kết nối  tới service được cân bằng tải trên tất cả. Địa chỉ IP của service không đổi, vì vậy clients có thể kết nối với containers, ngay cả khi chúng được di chuyển xung quanh cluster.
 	App nên chạy trên node ( user đăng nhập vào node )
 + CNI network : nw chung ( driver Calico, Weave Net ... )
 

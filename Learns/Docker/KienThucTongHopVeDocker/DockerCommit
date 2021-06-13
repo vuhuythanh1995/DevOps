@@ -31,3 +31,12 @@ $ docker inspect <IDcontainer> // <=> như $ cat <file> => sẽ cho ra 1 bản �
 	
 	copy file từ trong container ra ngoài host :
 $ docker cp <containerID>:/url . < . is the host >
+	
+	Có thể đặt địa chỉ container bằng --ip
+$ docker network create --subnet 10.66.0.0/16 pubnet
+42fb16ec412383db6289a3e39c3c0224f395d7f85bcb1859b279e7a564d4e135
+$ docker run --net pubnet --ip 10.66.66.66 -d nginx
+b2887adeb5578a01fd9c55c435cad56bbbe802350711d2743691f95743680b09	
+
+
+

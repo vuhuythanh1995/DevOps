@@ -1,4 +1,6 @@
 -- Image là khung gói gọn các cài đặt , thiết lập cần cho ứng dụng. Có thể hình dung Image là 1 -Class trong OOP, có thể tạo ra nhiều container tương tự như Object.
+-- Qúa trình xây dựng image không được thực hiện bởi ứng dụng Docker client, thay vào đó , nội dung được tải lên daemon Docker và Image xây dựng ở đó.
+-- Docker client với docker deamon không nhất thiết phải trên cùng 1 hệ điều hành, nếu bạn dùng hệ điều hành không phải linux thì docker client chạy trên hệ điều hành đó , và docker deamon chạy trên máy ảo linux.
 -- Để build 1 Image ta cần viết 1 Dockerfile, từ Dockerfile sẽ builde ra được 1 hoặc nhiểu Image :
 $ docker build -t (tên của Image) . ( dấu chấm là thư mục để lưu image)
 Example : $ docker build -t hello-docker .
