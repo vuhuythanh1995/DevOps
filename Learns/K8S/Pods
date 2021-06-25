@@ -1,0 +1,7 @@
+-- Understanding pods
+Bởi vì chúng ta không nên nhóm nhiều quy trình vào trong 1 container, nên cần 1 cấu trúc quản lý cấp cao hơn cho phép liên kết các vùng chứa với nhau, quản lý chúng như 1 đơn vị duy nhất => sinh ra pods.
+1 pod cho phép bạn chạy các quá trình có liên quan chặt chẽ với nhau và cung cấp cho chúng (gần như) cùng 1 môi trường như thể tất cả đang chạy trong cùng 1 container duy nhất, trong khi vẫn giữ chúng ở phần nào đó cô lập. Bằng cách này bạn có thể có được điều tốt nhất của cả 2 môi trường. Bạn có thể tận dụng tất cả các tính năng mà container cung cấp, đồng thời tạo ảo giác cho các quá trình chạy cùng nhau.
+
+Vì tính chất cô lập , các container trong pod chia sẻ tài nguyên với nhau bằng Linux namespaces và chạy trong cùng 1 Network namespace.
+-- Understanding how containers share the same ip and port space.
+Các quy trình chạy trong container cùng 1 pod cần phải cẩn thận để không liên kết với cùng 1 port hoặc chúng sẽ gặp xung đột cùng 1 port. Điều này chỉ xảy ra trong cùng 1 pod, còn các pod khác nhau không bao giờ xảy ra xung đột cổng, vì mỗi pod có 1 không gian port riêng biệt. Tất cả các container trong 1 pod có cùng 1 giao diện loopback network, vì vậy 1 container có thể giao tiếp với các container khác trong cùng 1 pod thông qua localhost.

@@ -23,3 +23,8 @@ $ docker network create --subnet 10.66.0.0/16 pubnet
 $ docker run --net pubnet --ip 10.66.66.66 -d nginx
 b2887adeb5578a01fd9c55c435cad56bbbe802350711d2743691f95743680b09
 
+	Chúng ta có thể kết nối với ứng dụng đang chạy trong container. Trên thực tế kết nối là 2 chiều, có thể apt-get install từ bên trong container và lấy packages được tải xuống từ internet vì network interfaces call docker0;
+Docker0 được tạo ra từ docker daemon để kết nối với Docker container.
+	Trong container sẽ có địa chỉ IP random và nó được kết hợp với máy chủ IP 172.17.0.1 , điều này có nghĩa là chúng ta có thể kết nối với ứng dụng nằm trong container ngay cả khi không có port forwarding, vd : 172.17.0.4:8080 , khi expose -p 2222:8080 => 0.0.0.0:2222 hoặc localhost:2222 
+	$ docker port <id> // check port được expose
+
