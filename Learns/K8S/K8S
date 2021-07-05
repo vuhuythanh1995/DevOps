@@ -113,8 +113,33 @@ service DNS : service-name.namespace.service.cluster.local. ( . để DNS ngắt
 ingress : Ingress controller ( tự cài thêm ) 
 
 cài K9s
+===================================================
+4. Package management
+Helm : quản lý app trên k8s.
+- k8s được cấu hình bằng file YAML. (hoặc JSON nhưng ít dùng vì nhiều syntax như {} " " )
+- Mọi thứ đều được định nghĩa theo file - declarative configuration.
+- kiểm soát hạ tầng bằng code.
+- Khó quản lý vì sinh ra quá nhiều file => sinh ra yaml template + values = yaml manifest.
+
+- patching system : template có sẵn , patching chứa sự thay đổi.
+- Helm quản lý gói cho K8s khi app đang chạy.
 
 
+- Helm chart giống docker image. chart chứa template.
+- Values : chứa values cụ thể khi chạy giống với env varible trong docker.
+- Repository giống docker hub.
+- Release : Tương tự như container.
+
+- Thứ tự ghi đè value : values.yaml : defaul luôn được load.
+
+- Sử dụng helm trong thực tế :  Cài đặt ứng dụng của bên thứ 3.
+				Triển khai ứng dụng của bản thân.
+
+ Đóng gói và triển khai ứng dụng nâng cao : XÂy dựng docker images : 1 container - 1 process
+	- 1 image - 1 binary
+	- 1 image - n binary
+	Xây dựng helm chart : 1 chart - 1 app.
+				1 chart - n app.
 
 
 
